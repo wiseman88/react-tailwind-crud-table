@@ -1,17 +1,16 @@
-import { useState } from "react";
-import reactLogo from "./assets/react.svg";
 import "./App.css";
+import Header from "./components/Header";
 
 function App() {
   // const [count, setCount] = useState(0)
 
+  const classes = {
+    body: "h-screen bg-gray-900 text-white",
+  };
+
   return (
-    <div className="App">
-      <h1>
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Velit harum
-        nemo tempore ratione provident, saepe temporibus amet iste perspiciatis
-        dolor?
-      </h1>
+    <div className={classes.body}>
+      <Header />
     </div>
   );
 }
