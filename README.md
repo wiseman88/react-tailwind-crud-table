@@ -1,8 +1,8 @@
-## About
+### About
 
 Small CRUD app created for learning purpose.
 
-## Technologies
+### Technologies
 
 - [React](https://reactjs.org/).
 - [Vite](https://vitejs.dev/).
