@@ -8,7 +8,7 @@ const Header = () => {
   return (
     <header className={classes.header}>
       <nav className={classes.navigation}>
-        <img src="/public/vite.svg" alt="vite logo" />
+        <img src="/vite.svg" alt="vite logo" />
         <ul className={classes.list}>
           <li>
             <a href="/">home</a>
