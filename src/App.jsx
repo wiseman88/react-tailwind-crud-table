@@ -3,6 +3,7 @@ import Header from "./components/Header";
 import Table from "./components/table/Table";
 import { Provider } from "react-redux";
 import { store } from "./store";
+import Form from "./components/Form";
 
 function App() {
   // const [count, setCount] = useState(0)
@@ -15,6 +16,7 @@ function App() {
     <div className={classes.body}>
       <Provider store={store}>
         <Header />
+        <Form />
         <Table />
       </Provider>
     </div>
