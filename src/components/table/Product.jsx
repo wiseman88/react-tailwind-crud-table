@@ -1,3 +1,6 @@
+import { useState } from "react";
+import { useSelector } from "react-redux";
+
 const Product = () => {
   const classes = {
     productRow: "bg-white border-b",
@@ -7,20 +10,9 @@ const Product = () => {
       "font-medium text-blue-600 dark:text-blue-500 hover:underline mr-6",
     btnDelete: "font-medium text-red-600 dark:text-red-500 hover:underline",
   };
-  const products = [
-    {
-      name: 'Apple MacBook Pro 18"',
-      color: "White",
-      category: "Laptop",
-      price: "1599",
-    },
-    {
-      name: 'Apple MacBook Pro 17"',
-      color: "Silver",
-      category: "Laptop",
-      price: "2999",
-    },
-  ];
+
+  const products = useSelector((state) => state.products);
+
   return (
     <>
       {products.map((product, index) => (
