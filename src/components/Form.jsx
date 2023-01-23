@@ -42,7 +42,7 @@ const Form = () => {
             name="name"
             className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg block w-full p-2.5"
             onChange={handleChange}
-            value={form.product}
+            value={form.name}
           />
         </div>
         <div className="mb-6">
