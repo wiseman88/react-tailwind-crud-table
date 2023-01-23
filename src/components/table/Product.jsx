@@ -1,5 +1,6 @@
 import { useState } from "react";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
+import { deleteProduct } from "../../store";
 
 const Product = () => {
   const classes = {
@@ -11,7 +12,9 @@ const Product = () => {
     btnDelete: "font-medium text-red-600 dark:text-red-500 hover:underline",
   };
 
-  const products = useSelector((state) => state.products);
+  const products = useSelector((state) => state.data.products);
+
+  const dispatch = useDispatch();
 
   return (
     <>
@@ -25,7 +28,12 @@ const Product = () => {
           <td className={classes.productTd}>${product.price}</td>
           <td className={classes.productTd}>
             <button className={classes.btnEdit}>Edit</button>
-            <button className={classes.btnDelete}>Delete</button>
+            <button
+              className={classes.btnDelete}
+              onClick={() => dispatch(deleteProduct(product.name))}
+            >
+              Delete
+            </button>
           </td>
         </tr>
       ))}
