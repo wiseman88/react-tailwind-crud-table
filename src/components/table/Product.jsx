@@ -24,12 +24,8 @@ const Product = () => {
           <td className={classes.productTd}>{product.category}</td>
           <td className={classes.productTd}>${product.price}</td>
           <td className={classes.productTd}>
-            <a href="#" className={classes.btnEdit}>
-              Edit
-            </a>
-            <a href="#" className={classes.btnDelete}>
-              Delete
-            </a>
+            <button className={classes.btnEdit}>Edit</button>
+            <button className={classes.btnDelete}>Delete</button>
           </td>
         </tr>
       ))}
