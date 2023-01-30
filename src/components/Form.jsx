@@ -26,36 +26,37 @@ const Form = () => {
     dispatch(addProduct(form));
   };
 
+  const classes = {
+    input:
+      "bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg block w-full p-2.5",
+    label: "block mb-2 text-sm font-medium text-gray-900 dark:text-white",
+    button: "w-full p-2 rounded bg-gray-900 hover:bg-gray-700 text-white",
+  };
+
   return (
     <section id="form" className="w-[480px] mx-auto mt-6">
       <form action="#" className="p-6 bg-white rounded-md" onSubmit={submit}>
         <div className="mb-6">
-          <label
-            htmlFor="product name"
-            className="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
-          >
+          <label htmlFor="product name" className={classes.label}>
             Product Name
           </label>
           <input
             type="text"
             id="product"
             name="name"
-            className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg block w-full p-2.5"
+            className={classes.input}
             onChange={handleChange}
             value={form.name}
           />
         </div>
         <div className="mb-6">
-          <label
-            htmlFor="color"
-            className="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
-          >
+          <label htmlFor="color" className={classes.label}>
             Select color
           </label>
           <select
             id="color"
             name="color"
-            className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg block w-full p-2.5"
+            className={classes.input}
             onChange={handleChange}
             value={form.color}
           >
@@ -66,16 +67,13 @@ const Form = () => {
           </select>
         </div>
         <div className="mb-6">
-          <label
-            htmlFor="category"
-            className="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
-          >
+          <label htmlFor="category" className={classes.label}>
             Select category
           </label>
           <select
             id="categories"
             name="category"
-            className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg block w-full p-2.5"
+            className={classes.input}
             onChange={handleChange}
             value={form.category}
           >
@@ -86,24 +84,19 @@ const Form = () => {
           </select>
         </div>
         <div className="mb-6">
-          <label
-            htmlFor="price"
-            className="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
-          >
+          <label htmlFor="price" className={classes.label}>
             Price
           </label>
           <input
             type="text"
             id="price"
             name="price"
-            className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg block w-full p-2.5"
+            className={classes.input}
             onChange={handleChange}
             value={form.price}
           />
         </div>
-        <button className="w-full p-2 rounded bg-gray-900 hover:bg-gray-700 text-white">
-          add product
-        </button>
+        <button className={classes.button}>add product</button>
       </form>
     </section>
   );
