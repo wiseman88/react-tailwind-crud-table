@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { addProduct } from "../store";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 
 const Form = () => {
   const [form, setForm] = useState({
@@ -25,6 +25,9 @@ const Form = () => {
     console.log(form);
     dispatch(addProduct(form));
   };
+
+  const categories = useSelector((state) => state.data.categories);
+  const colors = useSelector((state) => state.data.colors);
 
   const classes = {
     input:
@@ -60,10 +63,11 @@ const Form = () => {
             onChange={handleChange}
             value={form.color}
           >
-            <option>White</option>
-            <option>Silver</option>
-            <option>Black</option>
-            <option>Brown</option>
+            {colors.map((color, index) => (
+              <option key={index} value={color}>
+                {color}
+              </option>
+            ))}
           </select>
         </div>
         <div className="mb-6">
@@ -77,10 +81,11 @@ const Form = () => {
             onChange={handleChange}
             value={form.category}
           >
-            <option value="Laptop">Laptop</option>
-            <option value="PC">PC</option>
-            <option value="Tablet">Tablet</option>
-            <option value="Mobile">Mobile</option>
+            {categories.map((category, index) => (
+              <option key={index} value={category}>
+                {category}
+              </option>
+            ))}
           </select>
         </div>
         <div className="mb-6">

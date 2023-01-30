@@ -15,6 +15,8 @@ const initialState = {
       price: "2999",
     },
   ],
+  categories: ["Laptop", "PC", "Mobile", "Tablet"],
+  colors: ["White", "Silver", "Black", "Brown"],
 };
 
 const productsSlice = createSlice({
