@@ -1,4 +1,7 @@
 import { configureStore, createSlice } from "@reduxjs/toolkit";
+import axios from "axios";
+
+const API_URL = `https://63dcc719df83d549ce936b33.mockapi.io/products`;
 
 const initialState = {
   products: [
@@ -34,6 +37,16 @@ const productsSlice = createSlice({
     },
   },
 });
+
+export const addProductAsync = (data) => async (dispatch) => {
+  try {
+    const response = await axios.post(API_URL, data);
+
+    dispatch(addProduct(response.data));
+  } catch (err) {
+    throw new Error(err);
+  }
+};
 
 export const { addProduct, deleteProduct } = productsSlice.actions;
 export const store = configureStore({

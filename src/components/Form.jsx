@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { addProduct } from "../store";
+import { addProductAsync } from "../store";
 import { useDispatch, useSelector } from "react-redux";
 
 const Form = () => {
@@ -23,7 +23,7 @@ const Form = () => {
   const submit = (e) => {
     e.preventDefault();
     console.log(form);
-    dispatch(addProduct(form));
+    dispatch(addProductAsync(form));
   };
 
   const categories = useSelector((state) => state.data.categories);
