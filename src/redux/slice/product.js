@@ -1,4 +1,4 @@
-import { configureStore, createSlice } from "@reduxjs/toolkit";
+import { createSlice } from "@reduxjs/toolkit";
 import axios from "axios";
 
 const API_URL = `https://63dcc719df83d549ce936b33.mockapi.io/products`;
@@ -22,7 +22,7 @@ const initialState = {
   colors: ["White", "Silver", "Black", "Brown"],
 };
 
-const productsSlice = createSlice({
+const productSlice = createSlice({
   name: "products",
   initialState,
   reducers: {
@@ -48,9 +48,6 @@ export const addProductAsync = (data) => async (dispatch) => {
   }
 };
 
-export const { addProduct, deleteProduct } = productsSlice.actions;
-export const store = configureStore({
-  reducer: {
-    data: productsSlice.reducer,
-  },
-});
+export const { addProduct, deleteProduct } = productSlice.actions;
+
+export default productSlice.reducer;

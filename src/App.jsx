@@ -2,7 +2,7 @@ import "./App.css";
 import Header from "./components/Header";
 import Table from "./components/table/Table";
 import { Provider } from "react-redux";
-import { store } from "./store";
+import { store } from "./redux/store";
 import Form from "./components/Form";
 
 function App() {

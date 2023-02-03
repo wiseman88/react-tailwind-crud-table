@@ -1,6 +1,6 @@
 import { useState } from "react";
-import { addProductAsync } from "../store";
 import { useDispatch, useSelector } from "react-redux";
+import { addProductAsync } from "../redux/slice/product";
 
 const Form = () => {
   const [form, setForm] = useState({
@@ -26,8 +26,8 @@ const Form = () => {
     dispatch(addProductAsync(form));
   };
 
-  const categories = useSelector((state) => state.data.categories);
-  const colors = useSelector((state) => state.data.colors);
+  const categories = useSelector((state) => state.product.categories);
+  const colors = useSelector((state) => state.product.colors);
 
   const classes = {
     input:

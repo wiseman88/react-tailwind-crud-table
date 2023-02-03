@@ -1,6 +1,5 @@
-import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { deleteProduct } from "../../store";
+import { deleteProduct } from "../../redux/slice/product";
 
 const Product = () => {
   const classes = {
@@ -12,7 +11,7 @@ const Product = () => {
     btnDelete: "font-medium text-red-600 dark:text-red-500 hover:underline",
   };
 
-  const products = useSelector((state) => state.data.products);
+  const products = useSelector((state) => state.product.products);
 
   const dispatch = useDispatch();
 
