@@ -1,5 +1,6 @@
 import { useDispatch, useSelector } from "react-redux";
-import { deleteProduct } from "../../redux/slice/product";
+import { deleteProduct, fetchProducts } from "../../redux/slice/product";
+import { useEffect } from "react";
 
 const Product = () => {
   const classes = {
@@ -14,6 +15,11 @@ const Product = () => {
   const products = useSelector((state) => state.product.products);
 
   const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(fetchProducts());
+    console.log(products);
+  });
 
   return (
     <>

@@ -1,23 +1,15 @@
-import { createSlice } from "@reduxjs/toolkit";
+import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import axios from "axios";
 
 const API_URL = `https://63dcc719df83d549ce936b33.mockapi.io/products`;
 
+export const fetchProducts = createAsyncThunk("fetchProducts", async () => {
+  const response = await fetch(API_URL);
+  return response.json();
+});
+
 const initialState = {
-  products: [
-    {
-      name: 'Apple MacBook Pro 12"',
-      color: "White",
-      category: "Laptop",
-      price: "1599",
-    },
-    {
-      name: 'Apple MacBook Pro 14"',
-      color: "Silver",
-      category: "Laptop",
-      price: "2999",
-    },
-  ],
+  products: [],
   categories: ["Laptop", "PC", "Mobile", "Tablet"],
   colors: ["White", "Silver", "Black", "Brown"],
 };
@@ -35,6 +27,11 @@ const productSlice = createSlice({
         1
       );
     },
+  },
+  extraReducers: (builder) => {
+    builder.addCase(fetchProducts.fulfilled, (state, action) => {
+      state.products = action.payload;
+    });
   },
 });
 
