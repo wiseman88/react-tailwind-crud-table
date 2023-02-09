@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { addProductAsync } from "../redux/slice/product";
+import { addProduct } from "../redux/slice/product";
 
 const Form = () => {
   const [form, setForm] = useState({
@@ -22,8 +22,7 @@ const Form = () => {
 
   const submit = (e) => {
     e.preventDefault();
-    console.log(form);
-    dispatch(addProductAsync(form));
+    dispatch(addProduct(form));
   };
 
   const categories = useSelector((state) => state.product.categories);

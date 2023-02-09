@@ -7,6 +7,21 @@ export const fetchProducts = createAsyncThunk("fetchProducts", async () => {
   return response.json();
 });
 
+export const addProduct = createAsyncThunk("addProduct", async (data) => {
+  try {
+    const response = await fetch(API_URL, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(data),
+    });
+    return response.json();
+  } catch (err) {
+    console.log(err);
+  }
+});
+
 const initialState = {
   products: [],
   categories: ["Laptop", "PC", "Mobile", "Tablet"],
@@ -17,9 +32,6 @@ const productSlice = createSlice({
   name: "products",
   initialState,
   reducers: {
-    addProduct: (state, action) => {
-      state.products.push(action.payload);
-    },
     deleteProduct: (state, action) => {
       state.products.splice(
         state.products.findIndex((item) => item.name === action.payload),
@@ -30,6 +42,9 @@ const productSlice = createSlice({
   extraReducers: (builder) => {
     builder.addCase(fetchProducts.fulfilled, (state, action) => {
       state.products = action.payload;
+    });
+    builder.addCase(addProduct.fulfilled, (state, action) => {
+      state.products.push(action.payload);
     });
   },
 });
@@ -44,6 +59,6 @@ export const addProductAsync = (data) => async (dispatch) => {
   }
 };
 
-export const { addProduct, deleteProduct } = productSlice.actions;
+export const { deleteProduct } = productSlice.actions;
 
 export default productSlice.reducer;
