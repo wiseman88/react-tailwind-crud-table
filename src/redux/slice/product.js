@@ -22,6 +22,17 @@ export const addProduct = createAsyncThunk("addProduct", async (data) => {
   }
 });
 
+export const deleteProduct = createAsyncThunk("deleteProduct", async (data) => {
+  try {
+    const response = await fetch(`${API_URL}/${data}`, {
+      method: "DELETE",
+    });
+    return response.json();
+  } catch (err) {
+    console.log(err);
+  }
+});
+
 const initialState = {
   products: [],
   categories: ["Laptop", "PC", "Mobile", "Tablet"],
@@ -31,20 +42,18 @@ const initialState = {
 const productSlice = createSlice({
   name: "products",
   initialState,
-  reducers: {
-    deleteProduct: (state, action) => {
-      state.products.splice(
-        state.products.findIndex((item) => item.name === action.payload),
-        1
-      );
-    },
-  },
+  reducers: {},
   extraReducers: (builder) => {
     builder.addCase(fetchProducts.fulfilled, (state, action) => {
       state.products = action.payload;
     });
     builder.addCase(addProduct.fulfilled, (state, action) => {
       state.products.push(action.payload);
+    });
+    builder.addCase(deleteProduct.fulfilled, (state, action) => {
+      const { id } = action.payload;
+      const products = state.products.filter((product) => product.id !== id);
+      state.products = products;
     });
   },
 });
@@ -58,7 +67,5 @@ export const addProductAsync = (data) => async (dispatch) => {
     throw new Error(err);
   }
 };
-
-export const { deleteProduct } = productSlice.actions;
 
 export default productSlice.reducer;

@@ -35,7 +35,7 @@ const Product = () => {
             <button className={classes.btnEdit}>Edit</button>
             <button
               className={classes.btnDelete}
-              onClick={() => dispatch(deleteProduct(product.name))}
+              onClick={() => dispatch(deleteProduct(product.id))}
             >
               Delete
             </button>
