@@ -19,7 +19,7 @@ const Product = () => {
   useEffect(() => {
     dispatch(fetchProducts());
     console.log(products);
-  });
+  }, [dispatch]);
 
   return (
     <>
