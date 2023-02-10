@@ -58,14 +58,4 @@ const productSlice = createSlice({
   },
 });
 
-export const addProductAsync = (data) => async (dispatch) => {
-  try {
-    const response = await axios.post(API_URL, data);
-
-    dispatch(addProduct(response.data));
-  } catch (err) {
-    throw new Error(err);
-  }
-};
-
 export default productSlice.reducer;

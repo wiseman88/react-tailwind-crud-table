@@ -6,8 +6,6 @@ import { store } from "./redux/store";
 import Form from "./components/Form";
 
 function App() {
-  // const [count, setCount] = useState(0)
-
   const classes = {
     body: "h-screen bg-gray-900 text-white",
   };
