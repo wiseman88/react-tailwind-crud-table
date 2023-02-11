@@ -1,5 +1,6 @@
 import { useDispatch, useSelector } from "react-redux";
 import { deleteProduct, fetchProducts } from "../../redux/slice/product";
+import { openModal } from "../../redux/slice/modal";
 import { useEffect } from "react";
 
 const Product = () => {
@@ -31,7 +32,12 @@ const Product = () => {
           <td className={classes.productTd}>{product.category}</td>
           <td className={classes.productTd}>${product.price}</td>
           <td className={classes.productTd}>
-            <button className={classes.btnEdit}>Edit</button>
+            <button
+              className={classes.btnEdit}
+              onClick={() => dispatch(openModal())}
+            >
+              Edit
+            </button>
             <button
               className={classes.btnDelete}
               onClick={() => dispatch(deleteProduct(product.id))}
