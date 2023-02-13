@@ -34,7 +34,7 @@ const Product = () => {
           <td className={classes.productTd}>
             <button
               className={classes.btnEdit}
-              onClick={() => dispatch(openModal())}
+              onClick={() => dispatch(openModal(product.id))}
             >
               Edit
             </button>

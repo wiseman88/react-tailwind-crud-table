@@ -7,6 +7,11 @@ export const fetchProducts = createAsyncThunk("fetchProducts", async () => {
   return response.json();
 });
 
+export const fetchProduct = createAsyncThunk("fetchProduct", async (id) => {
+  const response = await fetch(`${API_URL}/${id}`);
+  return response.json();
+});
+
 export const addProduct = createAsyncThunk("addProduct", async (data) => {
   try {
     const response = await fetch(API_URL, {
@@ -35,6 +40,7 @@ export const deleteProduct = createAsyncThunk("deleteProduct", async (data) => {
 
 const initialState = {
   products: [],
+  product: "",
   categories: ["Laptop", "PC", "Mobile", "Tablet"],
   colors: ["White", "Silver", "Black", "Brown"],
 };
@@ -46,6 +52,9 @@ const productSlice = createSlice({
   extraReducers: (builder) => {
     builder.addCase(fetchProducts.fulfilled, (state, action) => {
       state.products = action.payload;
+    });
+    builder.addCase(fetchProduct.fulfilled, (state, action) => {
+      state.product = action.payload;
     });
     builder.addCase(addProduct.fulfilled, (state, action) => {
       state.products.push(action.payload);
