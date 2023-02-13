@@ -1,3 +1,5 @@
+import { Link, NavLink } from "react-router-dom";
+
 const Header = () => {
   const classes = {
     body: "h-screen bg-gray-900 text-white",
@@ -11,13 +13,13 @@ const Header = () => {
         <img src="/vite.svg" alt="vite logo" />
         <ul className={classes.list}>
           <li>
-            <a href="/">home</a>
+            <NavLink to="/">home</NavLink>
           </li>
           <li>
-            <a href="/">about</a>
+            <NavLink to="about">about</NavLink>
           </li>
           <li>
-            <a href="/">contact</a>
+            <NavLink to="contact">contact</NavLink>
           </li>
         </ul>
       </nav>

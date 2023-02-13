@@ -1,9 +1,11 @@
 import "./App.css";
 import Header from "./components/Header";
-import Table from "./components/product/table/Table";
 import { useSelector } from "react-redux";
-import Form from "./components/product/Form";
 import Modal from "./components/Modal";
+import { BrowserRouter, Route, Routes } from "react-router-dom";
+import { Home } from "./pages/Home";
+import { Contact } from "./pages/Contact";
+import { About } from "./pages/About";
 
 function App() {
   const classes = {
@@ -13,12 +15,17 @@ function App() {
   const showModal = useSelector((state) => state.modal.showModal);
 
   return (
-    <div className={classes.body}>
-      <Header />
-      <Form />
-      <Table />
-      {showModal && <Modal />}
-    </div>
+    <BrowserRouter>
+      <div className={classes.body}>
+        <Header />
+        <Routes>
+          <Route index element={<Home />} />
+          <Route path="about" element={<About />} />
+          <Route path="contact" element={<Contact />} />
+        </Routes>
+        {showModal && <Modal />}
+      </div>
+    </BrowserRouter>
   );
 }
 
