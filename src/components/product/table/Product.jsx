@@ -1,6 +1,6 @@
 import { useDispatch, useSelector } from "react-redux";
-import { deleteProduct, fetchProducts } from "../../redux/slice/product";
-import { openModal } from "../../redux/slice/modal";
+import { deleteProduct, fetchProducts } from "/src/redux/slice/product";
+import { openModal } from "/src/redux/slice/modal.js";
 import { useEffect } from "react";
 
 const Product = () => {

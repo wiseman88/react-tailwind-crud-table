@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { addProduct } from "../redux/slice/product";
+import { addProduct } from "/src/redux/slice/product";
 
 const Form = () => {
   const [form, setForm] = useState({

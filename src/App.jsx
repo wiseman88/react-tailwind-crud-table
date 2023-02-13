@@ -1,8 +1,8 @@
 import "./App.css";
 import Header from "./components/Header";
-import Table from "./components/table/Table";
+import Table from "./components/product/table/Table";
 import { useSelector } from "react-redux";
-import Form from "./components/Form";
+import Form from "./components/product/Form";
 import Modal from "./components/Modal";
 
 function App() {
