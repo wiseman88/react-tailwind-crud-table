@@ -2,12 +2,16 @@ import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { addProduct } from "/src/redux/slice/product";
 
-const Form = () => {
+const Form = (props) => {
+  const categories = useSelector((state) => state.product.categories);
+  const colors = useSelector((state) => state.product.colors);
+  const dispatch = useDispatch();
+
   const [form, setForm] = useState({
-    name: "",
-    color: "White",
-    category: "Laptop",
-    price: "",
+    name: props.inputName ? props.inputName : "",
+    color: props.inputColor ? props.inputColor : colors[0],
+    category: props.inputCategory ? props.inputCategory : categories[0],
+    price: props.inputPrice ? props.inputPrice : "",
   });
 
   const handleChange = (e) => {
@@ -18,15 +22,10 @@ const Form = () => {
     setForm((values) => ({ ...values, [name]: value }));
   };
 
-  const dispatch = useDispatch();
-
   const submit = (e) => {
     e.preventDefault();
     dispatch(addProduct(form));
   };
-
-  const categories = useSelector((state) => state.product.categories);
-  const colors = useSelector((state) => state.product.colors);
 
   const classes = {
     input:
@@ -36,7 +35,7 @@ const Form = () => {
   };
 
   return (
-    <section id="form" className="w-[480px] mx-auto mt-6">
+    <div id="form" className="w-[480px] mx-auto mt-6">
       <form action="#" className="p-6 bg-white rounded-md" onSubmit={submit}>
         <div className="mb-6">
           <label htmlFor="product name" className={classes.label}>
@@ -102,7 +101,7 @@ const Form = () => {
         </div>
         <button className={classes.button}>add product</button>
       </form>
-    </section>
+    </div>
   );
 };
 
