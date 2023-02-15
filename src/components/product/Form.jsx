@@ -8,10 +8,10 @@ const Form = (props) => {
   const dispatch = useDispatch();
 
   const [form, setForm] = useState({
-    name: props.inputName ? props.inputName : "",
-    color: props.inputColor ? props.inputColor : colors[0],
-    category: props.inputCategory ? props.inputCategory : categories[0],
-    price: props.inputPrice ? props.inputPrice : "",
+    name: "",
+    color: colors[0],
+    category: categories[0],
+    price: "",
   });
 
   const handleChange = (e) => {
@@ -99,22 +99,7 @@ const Form = (props) => {
             value={form.price}
           />
         </div>
-        {!props.modalProp && (
-          <button className={classes.button}>add product</button>
-        )}
-        {props.modalProp && (
-          <div className="flex gap-4">
-            <button
-              className="grow uppercase text-sm bg-red-500 hover:bg-red-600 rounded px-4 py-1"
-              onClick={() => dispatch(closeModal())}
-            >
-              cancel
-            </button>
-            <button className="grow uppercase text-sm p-2 rounded bg-blue-500 hover:bg-blue-600 text-white">
-              add product
-            </button>
-          </div>
-        )}
+        <button className={classes.button}>add product</button>
       </form>
     </div>
   );
