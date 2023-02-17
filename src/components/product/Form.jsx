@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { addProduct } from "/src/redux/slice/product";
+import styles from "../../styles/styles.module.css";
 
 const Form = (props) => {
   const categories = useSelector((state) => state.product.categories);
@@ -27,37 +28,30 @@ const Form = (props) => {
     dispatch(addProduct(form));
   };
 
-  const classes = {
-    input:
-      "bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg block w-full p-2.5",
-    label: "block mb-2 text-sm font-medium text-gray-900 dark:text-white",
-    button: "w-full p-2 rounded bg-gray-900 hover:bg-gray-700 text-white",
-  };
-
   return (
     <div id="form" className="w-[480px] mx-auto mt-6">
       <form action="#" className="p-6 bg-white rounded-md" onSubmit={submit}>
         <div className="mb-6">
-          <label htmlFor="product name" className={classes.label}>
+          <label htmlFor="product name" className={styles.label}>
             Product Name
           </label>
           <input
             type="text"
             id="product"
             name="name"
-            className={classes.input}
+            className={styles.input}
             onChange={handleChange}
             value={form.name}
           />
         </div>
         <div className="mb-6">
-          <label htmlFor="color" className={classes.label}>
+          <label htmlFor="color" className={styles.label}>
             Select color
           </label>
           <select
             id="color"
             name="color"
-            className={classes.input}
+            className={styles.input}
             onChange={handleChange}
             value={form.color}
           >
@@ -69,13 +63,13 @@ const Form = (props) => {
           </select>
         </div>
         <div className="mb-6">
-          <label htmlFor="category" className={classes.label}>
+          <label htmlFor="category" className={styles.label}>
             Select category
           </label>
           <select
             id="categories"
             name="category"
-            className={classes.input}
+            className={styles.input}
             onChange={handleChange}
             value={form.category}
           >
@@ -87,19 +81,19 @@ const Form = (props) => {
           </select>
         </div>
         <div className="mb-6">
-          <label htmlFor="price" className={classes.label}>
+          <label htmlFor="price" className={styles.label}>
             Price
           </label>
           <input
             type="text"
             id="price"
             name="price"
-            className={classes.input}
+            className={styles.input}
             onChange={handleChange}
             value={form.price}
           />
         </div>
-        <button className={classes.button}>add product</button>
+        <button className={styles.button}>add product</button>
       </form>
     </div>
   );
