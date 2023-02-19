@@ -1,5 +1,17 @@
 /* Form CSS */
 
+.body {
+  @apply min-h-screen bg-gray-900 text-white;
+}
+
+.navigation {
+  @apply container flex justify-between items-center p-4 mx-auto;
+}
+
+.list {
+  @apply flex gap-6 capitalize;
+}
+
 .input {
   @apply bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg block w-full p-2.5;
 }
